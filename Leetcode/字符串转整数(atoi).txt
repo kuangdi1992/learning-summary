@@ -44,6 +44,7 @@ python代码：
 class Solution(object):
     def myAtoi(self,s):
         import re
+		#正则化中^代表用^后面的开头，[-+]?表示[-+]可以出现，也可以不出现，\d匹配所有数字，\d+数字后面可以连接无数数字，但不能是其他东西，包括空格和字母
         list_s = re.findall(r"^[-+]?\d+",s.strip())
         print(list_s)
         if not list_s:
