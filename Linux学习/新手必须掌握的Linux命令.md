@@ -78,7 +78,8 @@ Fri Sep 28 19:07:39 CST 2018
 reboot命令用于重启系统(仅root用户可以使用)，格式为：“reboot”。
 
 #### wget命令 ####
-wegt命令用于使用命令行下载网络文件，格式为：<font color="red">"wegt [参数] 下载地址"</font>
+wegt命令用于使用命令行下载网络文件，格式为：<font color="red">"wegt [参数] 下载地址"</font>  
+
 参数|作用
 ---|---
 -b|后台下载模式
@@ -88,9 +89,9 @@ wegt命令用于使用命令行下载网络文件，格式为：<font color="red
 -p|下载页面内所有资源，包括图片、视频等
 -r|递归下载
 例子：
-> [kd@linux ~]$ wget -r -p http://www.linuxprobe.com
---2018-09-28 19:14:52--  http://www.linuxprobe.com/
-Resolving www.linuxprobe.com (www.linuxprobe.com)... 
+> [kd@linux ~]$ wget -r -p http://www.linuxprobe.com  
+--2018-09-28 19:14:52--  http://www.linuxprobe.com/  
+Resolving www.linuxprobe.com (www.linuxprobe.com)...   
 
 ### 系统状态检测命令 ###
 #### ifconfig命令 ####
