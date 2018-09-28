@@ -33,7 +33,7 @@ HISTORY|维护历史和联系方式
 #### echo命令 ####
 echo命令用于在终端显示字符串或变量，格式为："echo [字符串 | 变量]"
 例子：
->* [kd@linux ~]$ echo $SHELL
+>* [kd@linux ~]$ echo \$SHELL
   /bin/bash
   
 >* 查看本机主机名：
@@ -134,7 +134,7 @@ Red Hat Enterprise Linux Server release 7.4 (Maipo)
 uptime命令用于查看系统的负载情况，格式为：<font color="red">"uptime"</font>
 经常使用watch -n 1 uptime来每秒刷新一次获得当前的系统负载情况，输出内容分别为系统当前时间、系统已运行时间、当前在线用户以及平均负载值。而平均负载分为最近1分钟、5分钟、15分钟的系统负载情况，负载值越低越好（小于1是正常）。
 > 获取当前系统状态信息：
-[kd@linux ~]$ uptime
+[kd@linux ~]$ uptime  
  20:52:14 up  2:57,  2 users,  load average: 0.00, 0.01, 0.05
 
 
