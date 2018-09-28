@@ -1,4 +1,4 @@
-## 新手必须掌握的Linux命令 ##
+﻿## 新手必须掌握的Linux命令 ##
 本章节讲述了操作系统内核、bash解释器的关系与作用，学会如何正确的执行Linux命令以及常见排错方法。  
 经验丰富的运维人员可以恰当的组合命令与参数，使Linux字符命令更加的灵活且相对减少消耗系统资源。
 ### 强大好用的SHELL ###
@@ -15,7 +15,7 @@
 >* b.短格式：（单个字母的缩写）如：man -h
 
 #### man命令 ####
-用于查看命令的具体可用参数和对象格式等等。
+用于查看命令的具体可用参数和对象格式等等。  
 
 结构名称|代表意义
 ---|---
@@ -33,18 +33,18 @@ HISTORY|维护历史和联系方式
 
 ### 常用系统工作命令 ###
 #### echo命令 ####
-echo命令用于在终端显示字符串或变量，格式为："echo [字符串 | 变量]"
+echo命令用于在终端显示字符串或变量，格式为："echo [字符串 | 变量]"  
 例子：
->* [kd@linux ~]$ echo \$SHELL
+>* [kd@linux ~]$ echo \$SHELL    
   /bin/bash
   
 >* 查看本机主机名：
-[kd@linux ~]$ echo \$HOSTNAME
+[kd@linux ~]$ echo \$HOSTNAME    
 linux.com
 
 #### date命令 ####
 date命令用于显示/设置系统的时间或日期，格式为：“date [选项][+指定的格式]”
-强大的date命令能够按照指定格式显示系统日期或时间，只需要键入<font color="blue">“+”</font>号开头的字符串指定其格式，详细格式如下：
+强大的date命令能够按照指定格式显示系统日期或时间，只需要键入<font color="blue">“+”</font>号开头的字符串指定其格式，详细格式如下：  
 
 参数|作用
 ---|---
@@ -65,7 +65,7 @@ date命令用于显示/设置系统的时间或日期，格式为：“date [选
 %m|月份(01-12)
 %Y|完整的年份
 例子：
-> [kd@linux ~]$ date  
+> [kd@linux ~]$ date   
 Fri Sep 28 19:07:39 CST 2018
 
 > [kd@linux ~]$ date "+%Y-%m-%d %H:%M:%S"  
@@ -88,8 +88,8 @@ wegt命令用于使用命令行下载网络文件，格式为：<font color="red
 -p|下载页面内所有资源，包括图片、视频等
 -r|递归下载
 例子：
-> [kd@linux ~]$ wget -r -p http://www.linuxprobe.com  
---2018-09-28 19:14:52--  http://www.linuxprobe.com/  
+> [kd@linux ~]$ wget -r -p http://www.linuxprobe.com
+--2018-09-28 19:14:52--  http://www.linuxprobe.com/
 Resolving www.linuxprobe.com (www.linuxprobe.com)... 
 
 ### 系统状态检测命令 ###
@@ -124,17 +124,17 @@ ens33: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0  
 
 #### uname命令 ####
-uname命令用于查看系统内核版本等信息，格式为：<font color="red">"uname [-a]"</font>
+uname命令用于查看系统内核版本等信息，格式为：<font color="red">"uname [-a]"</font>。  
 查看系统的内核名称、内核发行版、内核版本、节点名、硬件名称、硬件平台、处理器类型、操作系统等信息：
 > [kd@linux ~]$ uname -a  
 Linux linux.com 3.10.0-693.el7.x86_64 #1 SMP Thu Jul 6 19:56:57 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux
 
-> 想查看系统详细版本信息就看redhat-release文件：
+> 想查看系统详细版本信息就看redhat-release文件：  
 [kd@linux ~]$ cat /etc/redhat-release  
 Red Hat Enterprise Linux Server release 7.4 (Maipo)
 
 #### uptime命令 ####
-uptime命令用于查看系统的负载情况，格式为：<font color="red">"uptime"</font>  
+uptime命令用于查看系统的负载情况，格式为：<font color="red">"uptime"</font>。  
 经常使用watch -n 1 uptime来每秒刷新一次获得当前的系统负载情况，输出内容分别为系统当前时间、系统已运行时间、当前在线用户以及平均负载值。而平均负载分为最近1分钟、5分钟、15分钟的系统负载情况，负载值越低越好（小于1是正常）。
 > 获取当前系统状态信息：
 [kd@linux ~]$ uptime  
@@ -142,12 +142,64 @@ uptime命令用于查看系统的负载情况，格式为：<font color="red">"u
 
 
 #### free命令 ####
-free命令用于显示当前系统中内存的使用量情况，格式为：<font color="red">“free [-m/-g]”</font>
-> 以m为单位显示当前系统中内存的使用量情况：
-[kd@linux ~]$ free -m
+free命令用于显示当前系统中内存的使用量情况，格式为：<font color="red">“free [-m/-g]”</font>。  
+> 以m为单位显示当前系统中内存的使用量情况：  
+[kd@linux ~]$ free -m  
               total        used        free      shared  buff/cache   available
 Mem:           1823         726         442          10         654         867
 Swap:          2047           0        2047
+
+#### who命令 ####
+who命令用于查看当前登入主机的用户情况，格式为：<font color="red">“who [参数]”</font>。  
+> 例子：  
+查看当前登入主机用户的情况：  
+[kd@linux ~]$ who  
+kd       :0           2018-09-28 17:56 (:0)  
+kd       pts/0        2018-09-28 17:57 (:0)  
+
+#### last命令 ####
+last命令用于查看所有系统的登入记录，格式为：<font color="red">“last [参数]”</font>。  
+> 查看系统的登入记录：  
+[kd@linux ~]$ last  
+kd       pts/0        :0               Fri Sep 28 17:57   still logged in     
+kd       :0           :0               Fri Sep 28 17:56   still logged in       
+reboot   system boot  3.10.0-693.el7.x Fri Sep 28 17:54 - 00:03  (06:08)      
+kd       pts/0        :0               Tue Sep 25 10:11 - 10:19  (00:07)      
+kd       pts/0        :0               Tue Sep 25 10:11 - 10:11  (00:00)      
+kd       pts/0        :0               Tue Sep 25 10:10 - 10:11  (00:00)      
+kd       :0           :0               Tue Sep 25 10:09 - down   (00:10)      
+reboot   system boot  3.10.0-693.el7.x Tue Sep 25 10:06 - 10:20  (00:14)      
+wtmp begins Tue Sep 25 10:06:01 2018  
+
+#### history命令 ####
+history命令用于显示历史执行过的命令，格式为：<font color="red">“history [-c]”</font>。
+> 查看当前用户在系统中执行过的命令：  
+[kd@linux ~]$ history  
+    1  ll  
+    2  cd  Downloads/  
+    3  ll  
+
+历史命令会被保存到用户目录中的“.bash_history”文件中。  
+Linux系统中以点.开头的文件均代表隐藏文件，一般会是系统文件。 
+> [kd@linux ~]$ cat ~/.bash_history  
+ll  
+cd  Downloads/  
+ll  
+
+清空该用户在本机中执行过命令的历史记录：
+> [kd@linux ~]$ history -c  
+[kd@linux ~]$ history  
+    1  history  
+
+#### sosreport命令 ####
+sosreport命令用于收集系统配置并诊断信息后输出结论文档，格式为“sosreport”。
+
+### 工作目录切换命令 ###
+
+
+
+
+
 
 
 
