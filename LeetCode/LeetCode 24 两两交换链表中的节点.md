@@ -5,7 +5,7 @@
 > 示例:
 > 给定 1->2->3->4, 你应该返回 2->1->4->3.
 >> 说明:
->>> 1.你的算法只能使用常数的额外空间。
+>>> 1.你的算法只能使用常数的额外空间。  
 >>> 2.你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
 
 ## 我的思路 ##
@@ -18,12 +18,20 @@
 
 ## 我的代码 ##
 
-    k = ListNode(0)
+    class Solution:
+    def swapPairs(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        k = ListNode(0)
         k.next = head
         head = k
+
         while head.next is not None and head.next.next is not None:
             n1 = head.next
             n2 = head.next.next
+
             head.next = n2
             n1.next = n2.next
             n2.next = n1
