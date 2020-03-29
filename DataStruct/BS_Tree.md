@@ -8,7 +8,8 @@
 从其性质可知，定义排序二叉树树的一种自然的方式是递归的方法，其算法的核心为递归过程，由于它的平均深度为O(logN)，所以递归的操作树，一般不必担心栈空间被耗尽。
 
 BST 的结点结构体定义如下，结点中除了 key 域，还包含域 left, right 和 parent，它们分别指向结点的左儿子、右儿子和父结点：
-
+* C语言
+```C
     typedef struct Node
     {
         int key;
@@ -16,11 +17,27 @@ BST 的结点结构体定义如下，结点中除了 key 域，还包含域 left
         Node* right;
         Node* parent;
     } *BSTree;
+```
+* python代码下BST的结构体的定义：
+```python
+	class Node:
+		def __init__(self, key):
+			self.key = key
+			self.left = None
+			self.right = None
+			self.parent = None
+			
+	初始化操作：
+	class BST:
+		def __init__(self, *args):
+			self.Root = None
+```
 
 ## 插入结点
 
 由于二叉查找树是递归定义的，插入结点的过程是：若原二叉查找树为空，则直接插入；否则，若关键字 k 小于根结点关键字，则插入到左子树中，若关键字 k 大于根结点关键字，则插入到右子树中。
-
+* C语言
+```C
     int BST_Insert(BSTree *T, int k, Node* parent=NULL)
     {
         if(T == NULL)
@@ -39,11 +56,37 @@ BST 的结点结构体定义如下，结点中除了 key 域，还包含域 left
         else
             return BST_Insert(T->right, k, T);
     }
+```
+* python代码
+```python
+   def insert(self, key, *args):
+        if not self.Root: #树为空
+            self.Root = Node(key) #当前节点作为根节点
+        elif len(args) == 0: #查找当前节点是否存在,不存在则执行插入操作
+            if not self.find(key, self.Root): #从根节点开始查，没找到返回None
+                self.insert(key, self.Root) #既然没找到，那就插入操作吧
+        else: #树不为空了，当前节点在BST中也不存在了，那就开始插入操作
+            child = Node(key) #用节点类创建孩子节点
+            parent = args[0]  #找到当前根节点，设置为双亲节点
+            if child.key > parent.key: #比较key值，大于则向右转
+                if not parent.right: #看看当前根节点的右有人不？没人？这孩子我要了
+                    parent.right = child
+                    child.parent = parent
+                else: #有人？那以当前根节点的右孩子为根节点，递归吧，看看谁要这孩子
+                    self.insert(key, parent.right)
+            else: #小于则向左转
+                if not parent.left:
+                    parent.left = child
+                    child.parent = parent
+                else:
+                    self.insert(key, parent.left)
+```
 
 ## 搜索结点
 
 BST 的查找是从根结点开始，若二叉树非空，将给定值与根结点的关键字比较，若相等，则查找成功；若不等，则当给定值小于根结点关键字时，在根结点的左子树中查找，否则在根结点的右子树中查找。显然，这是一个递归的过程。
-
+* C语言
+```C
     Node* BST_Search(BSTree *T, int k)
     {
     	if(T == NULL || k == T->key)
@@ -67,6 +110,25 @@ BST 的查找是从根结点开始，若二叉树非空，将给定值与根结�
     	}
     	return T;
     }
+```
+* python代码
+```python
+	 def find(self, key, *args):
+	    #边界条件作用：不断找根节点赋值给start，为空时start=None
+	    if len(args) == 0: 
+			start = self.Root
+		else:
+			start = args[0] 
+		if not start: #如果没有节点，则返回None
+			return None 
+		#如果根节点存在，则比较key值，遵循BST的右大左小规律递归查询
+		if key == start.key: #找到则返回该节点
+			return start
+		elif key > start.key: #大于向右转
+			return self.find(key, start.right)
+		else: #小于向左转
+			return self.find(key, start.left)
+```
 
 由二叉查找树的性质可知，最左下结点即为关键字最小的结点，最右下结点即为关键字最大的结点。
 
@@ -114,7 +176,52 @@ BST 的查找是从根结点开始，若二叉树非空，将给定值与根结�
     		T = T->left;
     	return T;
     }
+## 寻找最小值
+BST上查找——最小值：find_min()，这个只要记住BST上节点值最小的就是树上最左边的节点。就一直找左边，直到某个没有左子的节点为止。
+* python代码
+```python
+	def find_min(self, *args): # 查找BST上最小值：其实就是树上最左边的节点
+		if len(args) == 0: # 没给出参数，则找到BST的根节点
+			node = self.Root
+		else: #否则找到当前节点作为根节点
+			node = args[0]
 
+		if not node.left: #直到某个没有左子的节点为止，该节点就是最小的点
+			return node
+		else:
+			return self.find_min(node.left)
+```
+## 寻找最大值
+BST上查找——最小值：find_max()。
+* python代码
+```python
+	def find_max(self, *args):
+        if len(args) == 0:
+            node = self.Root
+        else:
+            node = args[0]
+            
+        if not node.right:
+            return node
+        else:
+            return self.find_max(node.right)
+```
+## 寻找次大值
+BST上查找——次大值：next_larger(), 算法思路（1）找到该节点；（2）查找该节点右子树上最小的点；（3）如果该节点无右子树，则查找左双亲节点的右双亲节点。
+* python代码
+```python
+	def next_larger(self, key):
+		if self.find(key) is None:
+			print("no exist this node")
+		else:
+			node = self.find(key)
+			if node.right is not None: #有右子树的情况
+				print("The node %d has right child, its next larger node is %d!" % (key, self.find_min(node.right).key))
+			else: #没有右子树的情况
+				leftparent = node.parent
+				rightparent = leftparent.parent
+				print("The node %d has no right, its next larger node is %d!" % (key, rightparent.key))
+```
 参考：
 [二叉查找树（BST）](http://songlee24.github.io/2015/01/13/binary-search-tree/)
 
