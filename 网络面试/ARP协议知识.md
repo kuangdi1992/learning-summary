@@ -21,7 +21,7 @@ ftp bsdi
  7. 目的主机的ARP层收到这份广播报文后，会发送一个ARP应答报文，包含IP地址和对应的硬件地址。
  8. 收到ARP应答报文后，可以发送IP数据报到目的主机。
 
-![enter description here](./images/ARP1.png)
+![enter description here](https://github.com/kuangdi1992/Interview-knowledge/blob/master/%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95/%E5%9B%BE%E7%89%87/ARP1.png)
 
 从上面的ftp的过程中，我们可以了解到ARP的作用。
 
@@ -31,8 +31,8 @@ ftp bsdi
 
 #### ARP请求
 任何时候，当主机需要找出这个网络中的另一个主机的物理地址时，它就可以发送一个ARP请求报文，这个报文包好了发送方的MAC地址和IP地址以及接收方的IP地址。因为发送方不知道接收方的物理地址，所以这个查询分组会在网络层中进行==广播 #F44336==。
-![enter description here](./images/ARP请求.png)
+![enter description here](https://github.com/kuangdi1992/Interview-knowledge/blob/master/%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95/%E5%9B%BE%E7%89%87/ARP%E8%AF%B7%E6%B1%82.png)
 #### ARP响应
 ==局域网中的每一台主机都会接受并处理这个ARP请求报文，然后进行验证，查看接收方的IP地址是不是自己的地址，只有验证成功的主机才会返回一个ARP响应报文，这个响应报文包含接收方的IP地址和物理地址。== 这个报文利用收到的ARP请求报文中的请求方物理地址以单播的方式直接发送给ARP请求报文的请求方。
-![enter description here](./images/ARP响应.png)
+![enter description here](https://github.com/kuangdi1992/Interview-knowledge/blob/master/%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95/%E5%9B%BE%E7%89%87/ARP%E5%93%8D%E5%BA%94.png)
 
