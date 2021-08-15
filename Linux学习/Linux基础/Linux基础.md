@@ -47,3 +47,7 @@
 #### 冯诺依曼体系
 
 存储程序的主要思想：将程序和数据存放到计算机内部的存储器中，计算机就在程序的控制下一步一步进行处理。
+
+计算机由五大部件组成：输入设备、输出设备、存储器、运算器、控制器
+
+![image-20210815224349021](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20210815224349021.png)
