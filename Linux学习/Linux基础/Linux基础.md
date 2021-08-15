@@ -36,11 +36,11 @@
 
 在纸带上读入3，在纸带上读入2，在纸带上读入+，控制器查表知道为5，在纸带上写下5
 
-![image-20210815220434684](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20210815220434684.png)
+![image-20210815220434684](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20210815220434684.png)
 
 通用图灵机的结构如下：
 
-![image-20210815220701997](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20210815220434684.png)
+![image-20210815220701997](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20210815220701997.png)
 
 当我们将加法逻辑读入到控制器中，控制器就会做加法，把乘法逻辑读入到控制器中，控制器就会做乘法。
 
