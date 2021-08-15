@@ -4,7 +4,7 @@
 
 裸机：只有计算机硬件的东西。
 
-![image](https://github.com/kuangdi1992/Interview-knowledge/blob/master/image-20210815213517106.png)
+![image](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20210815213517106.png)
 
 操作系统是在计算机硬件上的一层软件，让大家可以更好的使用计算机。
 
@@ -32,7 +32,7 @@
 
 1936年，英国数学家A.C.图灵提出了一种模型，如下：
 
-![image-20210815220252876](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20210815220252876.png)
+![image-20210815220252876](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20210815220252876.png)
 
 在纸带上读入3，在纸带上读入2，在纸带上读入+，控制器查表知道为5，在纸带上写下5
 
@@ -40,7 +40,7 @@
 
 通用图灵机的结构如下：
 
-![image-20210815220701997](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20210815220701997.png)
+![image-20210815220701997](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20210815220434684.png)
 
 当我们将加法逻辑读入到控制器中，控制器就会做加法，把乘法逻辑读入到控制器中，控制器就会做乘法。
 
