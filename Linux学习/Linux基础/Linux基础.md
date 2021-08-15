@@ -4,6 +4,8 @@
 
 裸机：只有计算机硬件的东西。
 
+![image](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Linux%E5%AD%A6%E4%B9%A0/Linux%E5%9F%BA%E7%A1%80/image-20210815213517106.png)
+
 操作系统是在计算机硬件上的一层软件，让大家可以更好的使用计算机。
 
 方便使用硬件，如使用显存……
