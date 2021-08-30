@@ -99,7 +99,7 @@ jmpi   0,8
 
 1、CR0 是系统内的控制寄存器之一。控制寄存器是一些特殊的寄存器，它们可以控制CPU的一些重要特性。0位是保护允许位PE(Protedted Enable)，用于启动保护模式，如果PE位置1，则保护模式启动，如果PE=0，则在实模式下运行。
 
-![image-20210830221541443](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20210830221541443.png)
+![image-20210830221541443](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20210830221541443.png)
 
 2、lmsw：置处理器状态字。但是只有操作数的低4位被存入CR0，即只有PE,MP,EM和TS被改写，CR0其他位不受影响。<font color=red>此处把cr0的最后一位设置为1，从实模型进入保护模式。</font>
 3、为什么有保护模式？
@@ -107,7 +107,7 @@ jmpi   0,8
 
 4、保护模式下的地址翻译
 
-![保护模式地址翻译](C:\Users\kd\Desktop\保护模式地址翻译.png)
+![保护模式地址翻译](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E5%9C%B0%E5%9D%80%E7%BF%BB%E8%AF%91.png)
 
 从图中可以看出，在保护模式下，根据cs在GDT表中的查找的值+ip来进行地址翻译的，CS也被称作选择子，里面放的是查表的索引。
 
@@ -140,7 +140,7 @@ gdt_48:
 
 ### gdt中的8
 
-![保护模式地址翻译](C:\Users\kd\Desktop\保护模式地址翻译.png)
+![保护模式地址翻译](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E5%9C%B0%E5%9D%80%E7%BF%BB%E8%AF%91.png)
 
 8对应的表项为：
 
@@ -151,6 +151,6 @@ gdt_48:
 
 对应的GDT表项为：
 
- ![GDT表项](C:\Users\kd\Desktop\GDT表项.png)
+ ![GDT表项](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/GDT%E8%A1%A8%E9%A1%B9.png)
 
 表项中红色的对应的是段基址，那么8对应的段基址为0x00000000，加上ip=0x0，则CS：ip为0x00000.
