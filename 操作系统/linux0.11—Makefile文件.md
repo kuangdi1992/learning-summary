@@ -75,7 +75,7 @@ tools/system:	boot/head.o init/main.o \
 	$(MATH) \
 	$(LIBS) \
 	-o tools/system 
-	nm tools/system | grep -v '\(compiled\)\|\(\.o$$\)\|\( [aU] \)\|\(\.\.ng$$\)\|\(LASH[RL]DI\)'| sort > System.map 
+	nm tools/system | grep -v '\(compiled\)\|\(\.o$$\)\|\( [aU] \)\|\(\.\.ng$$\)\|\(LASH[RL]DI\)'| sort > System.map  #表示tools目录中的system文件由head.o、main.o等元素生成，最后gld将链接映像重定向存放在System.map文件中。
 
 kernel/math/math.a: # 数学协处理函数文件math.a 由下一行上的命令实现。
 (cd kernel/math; make) # 进入kernel/math/目录；运行make 工具程序。
