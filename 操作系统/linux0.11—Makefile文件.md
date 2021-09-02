@@ -49,8 +49,10 @@ LIBS	=lib/lib.a     //lib通用库文件
 all:	Image //创建Image文件
 
 Image: boot/bootsect boot/setup tools/system 
-tools/build //说明Image文件由boot目录下的bootsect和setup，以及tools目录下的system和build文件组成。
-tools/build boot/bootsect boot/setup tools/kernel $(ROOT_DEV) > Image //表示使用tools中的build工具程序将bootsect、setup、system文件以$(ROOT_DEV)为根文件系统设备组装成Image。
+tools/build 
+//说明Image文件由boot目录下的bootsect和setup，以及tools目录下的system和build文件组成。
+tools/build boot/bootsect boot/setup tools/kernel $(ROOT_DEV) > Image 
+//表示使用tools中的build工具程序将bootsect、setup、system文件以$(ROOT_DEV)为根文件系统设备组装成Image。
 	sync //迫使缓冲块数据立即写盘并更新超级块
 
 disk: Image # 表示disk 这个目标要由Image 产生。
