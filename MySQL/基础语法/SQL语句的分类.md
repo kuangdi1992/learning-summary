@@ -82,7 +82,7 @@ select deptno,dname "dept name" from DEPT;
 
      以及
 
-     ```
+     ```sql
     select empno,ename from EMP where sal<>800;
      ```
 
