@@ -83,7 +83,7 @@ select deptno,dname "dept name" from DEPT;
      以及
 
      ```
-  select empno,ename from EMP where sal<>800;
+    select empno,ename from EMP where sal<>800;
      ```
 
    - 小于 <
@@ -246,6 +246,48 @@ sal在前，起主导，只有在sal相等情况下，才会使用ename。
 ![image-20210829173716984](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/MySQL/image-20210829173716984.png)
 
 注意：上述语句中的关键字顺序不能改变。
+
+##### 去重
+
+关键字：distinct
+
+只对查询结果去重，不改变原表结构
+
+用法：
+
+```
+select distinct job from EMP;
+```
+
+![image-20210905103244469](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/MySQL/image-20210905103244469.png)
+
+【注意】错误编写展示：
+
+```
+select ename,distinct job from EMP;
+```
+
+![image-20210905103402296](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/MySQL/image-20210905103402296.png)
+
+<font color=red>distinct只能出现在所有字段的最前方.</font>
+
+正确展示：
+
+```
+select distinct job,deptno from EMP;
+```
+
+表示distinct后的两个字段联合起来去重。
+
+![image-20210905103612907](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/MySQL/image-20210905103612907.png)
+
+示例：统计工作岗位的数量
+
+```
+select count(distinct job) from EMP;
+```
+
+![image-20210905103747073](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/MySQL/image-20210905103747073.png)
 
 ## DML
 
