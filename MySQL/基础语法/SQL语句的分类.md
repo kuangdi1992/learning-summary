@@ -82,10 +82,8 @@ select deptno,dname "dept name" from DEPT;
 
      以及
 
-     ```
-    select empno,ename from EMP where sal<>800;
-     ```
-
+     select empno,ename from EMP where sal <> 800;
+    
    - 小于 <
 
      查询薪资小于2000的员工姓名和编号
@@ -197,7 +195,7 @@ select deptno,dname "dept name" from DEPT;
      一个下划线只匹配一个字符
 
      ![image-20210829170554422](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/MySQL/image-20210829170554422.png)
-   
+
      \转义字符，主要用在字符串中有_或%。
 
 ##### 排序
