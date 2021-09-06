@@ -10,6 +10,12 @@
 
 ## head.s
 
+#### 主要作用
+
+初始化中断描述符表中的一些门描述符，检查A20地址线是否已经打开，测试系统是否含有数学协处理器，然后初始化内存页目录表，为内存的分页管理做好准备，最后跳转到system模块中的初始化程序init/main.c中继续执行。
+
+#### 简单介绍
+
 head.s程序在被编译生产目标文件后，与内核其他程序一起被链接成system模块，位于system模块的最开始部分。
 
 system模块被放在磁盘上setup模块后开始的扇区中，从磁盘上第6个扇区开始放置。
@@ -36,7 +42,7 @@ _startup_32:          ;// 以下5行设置各个数据段寄存器。指向gdt�
    mov gs,ax        ;// CS 代码段寄存器已经在setup_gdt 中重新加载过了。
 ```
 
-上述代码含义：设置ds、es、fs、gs为setup.s中构造的数据段的选择符0x10，并将堆栈放置在stack_start指向的user_stack数组区，然后使用定义的新中断描述符表和全局段描述表。
+上述代码含义：设置ds、es、fs、gs为setup.s中构造的数据段的选择符0x10，并将堆栈放置在stack_start指向的user_stack数组区，然后使用<font color=red>定义的新中断描述符表和全局段描述表。</font>
 
 ```
   1:	incl %eax		# check that A20 really IS enabled
@@ -45,7 +51,7 @@ _startup_32:          ;// 以下5行设置各个数据段寄存器。指向gdt�
 	je 1b   #1b表示向后backward跳转到标号1去。
 ```
 
-上面几句代码用于测试A20地址线是否已经开启。
+上面几句代码用于<font color=red>测试A20地址线是否已经开启。</font>
 
 采用的方法是：向内存地址0x000000处写入任意数值，然后看内存地址0x100000(1M)处是否也是这个值，若一直相同则一直比较就会死机，表示A20地址线没有通，内核不能使用1MB以上的内存。
 
@@ -58,7 +64,7 @@ call check_x87
 jmp after_page_tables  #跳转到after_page_tables
 ```
 
-上面的代码用于检查数学协处理器芯片是否存在（不太懂）。
+上面的代码用于<font color=red>检查数学协处理器芯片是否存在（不太懂）。</font>
 
 ```
 setup_idt:
@@ -105,6 +111,8 @@ after_page_tables:
 
 ![pushl](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/pushl.png)
 
+【注意】从上图中的栈来看，main函数真的退出时，就会返回到标号L6处继续执行，是死循环，系统就会死机，因此main函数是永远都不会退出的，也就是我们进入系统中看到的界面等。
+
 入栈后，jmp到setup_paging来执行。
 
 ```
@@ -143,7 +151,7 @@ setup_paging:
    ret          /* this also flushes prefetch-queue */
 ```
 
-这一段代码主要是对内存进行分页处理，并且设置各个页表项的内容。
+这一段代码主要是<font color=red>对内存进行分页处理，并且设置各个页表项的内容。</font>
 
 在代码的末尾，使用返回指令ret，刷新预取指令队列，也就是将上图中压入栈的main程序的地址弹出，并跳转到/init/main.c程序去运行。
 
