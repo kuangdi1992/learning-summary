@@ -22,7 +22,7 @@ system模块被放在磁盘上setup模块后开始的扇区中，从磁盘上第
 
 从这里开始，内核就完全在保护模式下运行了。
 
-## 代码解读
+### 代码解读
 
 ```
 _startup_32:          ;// 以下5行设置各个数据段寄存器。指向gdt数据段描述符项
@@ -160,3 +160,9 @@ setup_paging:
 跳转到/init/main.c程序去运行，表示head.s程序执行结束，正式完成了内存页目录和页表的设置，并重新设置了内核实际使用的中断描述符表idt和全局描述符表gdt。此时system模块在内存中的详细映像如下：
 
 ![image-20210906222150976](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20210906222150976.png)
+
+## main函数
+
+在内核代码中，init目录下只有一个main.c文件，在执行完boot目录下的head.s程序后将执行权交给main.c。
+
+该程序包含了内核初始化的所有工作。

@@ -58,7 +58,7 @@ public class Graduate {
 
 ## 继承原理图
 
-![jichen](F:\git资料\Interview-knowledge\Picture\java\jichen.png)
+![jichen](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/java/jichen.png)
 
 #### 基本语法
 
@@ -171,11 +171,11 @@ public class Sub extends Base {
 
 因此，我们在父类中提供两个public方法来实现对两个private属性和方法的访问。结果如下：
 
-![image-20210822104229902](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20210822104229902.png)
+![image-20210822104229902](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/java/image-20210822104229902.png)
 
 从下面的图中可以看出子类中继承了父类的所有的属性。
 
-![image-20210822103744409](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20210822103744409.png)
+![image-20210822103744409](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/java/image-20210822103744409.png)
 
 2、子类必须调用父类的构造器，完成父类的初始化。
 
@@ -195,7 +195,7 @@ public class Sub extends Base {
 
 结果如图：
 
-![image-20210822105609250](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20210822105609250.png)
+![image-20210822105609250](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/java/image-20210822105609250.png)
 
 当父类中的无参构造器被覆盖后：
 
@@ -233,7 +233,7 @@ public class Sub extends Base {
 
 结果如下：
 
-![image-20210822110554799](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20210822110554799.png)
+![image-20210822110554799](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/java/image-20210822110554799.png)
 
 【总结】当创建子类对象时，不管使用子类的哪个构造器，默认情况下总会调用父类的无参构造器。
 
