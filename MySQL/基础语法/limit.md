@@ -16,7 +16,7 @@ from
 where
     ....
 limit
-    startindex，length; // 取前length个，startindex是起始下标，length是长度
+    startindex，length; // 取前length个，startindex是起始下标，length是长度，注意startindex的缺省值是0，即limit 5;表示前5个
 ```
 
 mysql中limit在order by之后执行。
