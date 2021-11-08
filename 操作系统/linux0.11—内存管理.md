@@ -276,9 +276,24 @@ struct task_struct {
 
 结构体中有一段代码`struct mm_struct *mm, *active_mm;` 其中会定义进程内存管理信息，结构体为mm_struct，路径为 linux-2.6/include/linux/mm_types.h，如下：
 
+```c
+struct mm_struct {
+	struct vm_area_struct * mmap;		/* list of VMAs */
+	struct rb_root mm_rb;
+	struct vm_area_struct * mmap_cache;	/* last find_vma result */
+#ifdef CONFIG_MMU
+	unsigned long (*get_unmapped_area) (struct file *filp,
+				unsigned long addr, unsigned long len,
+				unsigned long pgoff, unsigned long flags);
+	void (*unmap_area) (struct mm_struct *mm, unsigned long addr);
+#endif
+	unsigned long mmap_base;		/* base of mmap area */
+	unsigned long task_size;		/* size of task vm space */
+	unsigned long cached_hole_size; 	/* if non-zero, the largest hole below free_area_cache */
+	unsigned long free_area_cache;		/* first hole of size cached_hole_size or larger */
 ```
 
-```
+从上面的代码可以看出，在mm_struct结构体中，含有base of mmap area，也就是基址base。
 
 ### 整体过程
 
