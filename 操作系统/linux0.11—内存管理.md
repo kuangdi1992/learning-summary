@@ -325,7 +325,7 @@ struct mm_struct {
 
 ​		所以，实际上，OS将程序分成了各种段，如下图所示：
 
-​		![image-20211113203009441](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20211113203009441.png)
+​		![image-20211113203009441](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211113203009441.png)
 
 ​		每段都是有各自的特点和用途，代码段只读，代码段数据段不会动态增长，数据段可写。
 
@@ -333,7 +333,7 @@ struct mm_struct {
 
 ​		这样更易于内存使用和程序管理，在分段后，将各段分别放到内存中：
 
-​		![image-20211113204015355](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20211113204015355.png)
+​		![image-20211113204015355](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211113204015355.png)
 
 ​		**问题**：如果上图中3号段为堆栈段，向下延伸的时候发现下方空闲内存不足了，会如何处理？
 
@@ -370,7 +370,7 @@ struct mm_struct {
 
 ​		GDTR寄存器中存放的是GDT在内存中的基地址和其表长界限。
 
-​		![image-20211113211209760](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20211113211209760.png)
+​		![image-20211113211209760](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211113211209760.png)
 
 ​		基地址指定GDT表中字节0在线性地址空间中的地址，表长度指明GDT表的字节长度值。
 
@@ -380,7 +380,7 @@ struct mm_struct {
 
 ​		段选择子是一个16位的寄存器，如图所示：
 
-​		![image-20211113212509059](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20211113212509059.png)
+​		![image-20211113212509059](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211113212509059.png)
 
 ​		段选择子包含三部分：描述符索引（index）、TI、请求特权级（PRL）。
 
@@ -398,7 +398,7 @@ struct mm_struct {
 
 ​		我们可以理解为：GDT为一级描述符表，LDT为二级描述符表。
 
-​		![image-20211113214209503](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20211113214209503.png)
+​		![image-20211113214209503](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211113214209503.png)
 
 ​		LDTR记录局部描述符表的起始位置，和GDTR不同，LDTR的内容是一个段选择子。由于LDT本身同样是一段内存，也是一个段，所以它也有个描述符描述它，这个描述符就存储在GDT中，对应这个表述符也会有一个选择子，LDTR装载的就是这样一个选择子。
 
@@ -424,7 +424,7 @@ struct mm_struct {
 
 ​		程序分为数据段、代码段、栈等，然后分段在内存中找到空闲分区，并将空闲分区的基址放到对应的LDT表中对应段号下，如图：
 
-​		![image-20211113224225879](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20211113224225879.png)
+​		![image-20211113224225879](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211113224225879.png)
 
 ​		初始化LDT表之后，将LDT表置于PCB中，将PC指针初始化，然后进行取指执行，这样就可以正常使用内存了。
 
@@ -446,7 +446,7 @@ struct mm_struct {
 
 ​		于是，出现了可变分区，按照段请求的大小，在空闲内存中分出相应大小的空闲分区出来。
 
-​		![image-20211118091415757](F:\git资料\Learning-summary\Picture\linux\image-20211118091415757.png)
+​		![image-20211118091415757](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211118091415757.png)
 
 ​		
 
@@ -454,13 +454,13 @@ struct mm_struct {
 
 ​		现在有个段内存请求：reqSize=100K，这时就需要从空闲分区中划出100K的空间给到新的段。
 
-![image-20211118091807307](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20211118091807307.png)
+![image-20211118091807307](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211118091807307.png)
 
 ​		可以看出，在空闲分区中划分了100K的空间给Seg3，然后在空闲分区表和已分配分区表中修改相关数据。
 
 ​		当然，不仅有分配内存，也有释放内存的情况。当Seg2不再使用的时候，我们需要将它释放掉，如下图：
 
-![image-20211118124944163](C:\Users\kd\AppData\Roaming\Typora\typora-user-images\image-20211118124944163.png)
+![image-20211118124944163](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211118124944163.png)
 
 ​		这时，又有一个段提出内存请求：reqSize=40K，那么应该怎么选择空闲分区呢？
 
@@ -494,7 +494,7 @@ struct mm_struct {
 
 ​		当页已经载入内存后，页0放到页框5中，如图所示：
 
-​		![image-20211122234101830](F:\git资料\Learning-summary\Picture\linux\image-20211122234101830.png)
+​		![image-20211122234101830](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211122234101830.png)
 
 ​		那么页0的地址就需要重定位，这个重定位的过程就需要用到页表。
 
@@ -502,17 +502,17 @@ struct mm_struct {
 
 ​		分页后的逻辑地址如下图所示：
 
-​		![image-20211123213252383](F:\git资料\Learning-summary\Picture\linux\image-20211123213252383.png)
+​		![image-20211123213252383](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211123213252383.png)
 
 ​		示例：`mov [0x2240],%eax`中，0x2240除以4K（表示页号是多少），也就是整体向右移动12位，即0x02，页号为2，所以逻辑地址为：
 
-​		![image-20211123213559472](F:\git资料\Learning-summary\Picture\linux\image-20211123213559472.png)
+​		![image-20211123213559472](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211123213559472.png)
 
 ##### 页表
 
 ​		然后到页表中去查找：
 
-​		![image-20211123214630388](F:\git资料\Learning-summary\Picture\linux\image-20211123214630388.png)
+​		![image-20211123214630388](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211123214630388.png)
 
 ​		根据页号到页表中查找对应的页框号，然后加上offset值，去物理地址中找到对应的地址0x3240。
 
@@ -528,7 +528,7 @@ struct mm_struct {
 
 ​		实际上，大部分的逻辑地址是根本不会被用到的。
 
-![image-20211208201721880](F:\git资料\Learning-summary\Picture\linux\image-20211208201721880.png)
+![image-20211208201721880](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211208201721880.png)
 
 ​		在左边的页表中，页号为2的逻辑页号并没有被用到，而在实际的运用中有更多的页表项没有被用到。那么，可不可以将不使用的逻辑页号从页表中去掉？
 
@@ -540,7 +540,7 @@ struct mm_struct {
 
 ​		逻辑地址：
 
-​		![image-20211208205057963](F:\git资料\Learning-summary\Picture\linux\image-20211208205057963.png)
+​		![image-20211208205057963](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211208205057963.png)
 
 ​		根据逻辑地址中的页目录号找到页目录表中对应的页目录，然后根据页目录和页号在页表中找到对应的物理页号，最后根据物理页号和offset找到真正的物理地址。上图中所有颜色的块都对应有相应的页表，空白的虽然没有使用，但是仍然占有相应的位置，维持着页目录的连续，方便查找。2的10次方个目录项*4字节地址=4K。从上图中可以看出，页表项需要4K，使用3个页表项，每个页表项指向一张页表，每张页表是2的10次方乘以4字节地址=4K，总共就需要16K<<4M,远小于没有使用多级页表的4M。
 
@@ -554,7 +554,7 @@ struct mm_struct {
 
 ​		过程：
 
-​	![image-20211208214045420](F:\git资料\Learning-summary\Picture\linux\image-20211208214045420.png)
+​	![image-20211208214045420](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211208214045420.png)
 
 ​		一次比对：如果页号为21，可以将页号拿出来进行一次比对，拿到页框号，从而拿到相应的物理地址。如果页号不在TLB中，则使用多级页表找到对应的物理页号，同时将相应的数据写到TLB表中。
 
@@ -572,7 +572,7 @@ struct mm_struct {
 
 ​		段是面向程序的，页是面向物理内存的，通过虚拟内存来映射段和物理内存。
 
-​		![image-20211208215534918](F:\git资料\Learning-summary\Picture\linux\image-20211208215534918.png)
+​		![image-20211208215534918](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211208215534918.png)
 
 ​		对用户来说，就像是在用段的方式来访问内存，对物理内存来说，是用页的方式来访问的。
 
@@ -582,6 +582,6 @@ struct mm_struct {
 
 ​		程序的逻辑地址：段号+偏移(cs:ip)，根据上图可知，根据段号和段内偏移，可以找到虚拟内存中相应的区域，如下
 
-![image-20211208234125677](F:\git资料\Learning-summary\Picture\linux\image-20211208234125677.png)
+![image-20211208234125677](https://github.com/kuangdi1992/Interview-knowledge/blob/master/Picture/linux/image-20211208234125677.png)
 
 ​		最后，OS将物理地址放到地址总线，逻辑地址就转换成了真正的物理地址，其中要经过两层地址翻译，一层是基于段的地址翻译，一层是基于页的地址翻译。经过段号和偏移，计算出虚拟地址的页号和页内偏移，然后通过页号和页内偏移在页表中计算出相应的物理地址。
