@@ -10,7 +10,7 @@ int sumRegion(int row1, int col1, int row2, int col2) 返回 左上角 (row1, co
 
 # 示例
 
-![1](F:\git资料\Learning-summary\Picture\Leetcode\1.png)
+![1](https://github.com/kuangdi1992/learning-summary/blob/master/Picture/Leetcode/1.png)
 
 ```java
 输入: 
@@ -32,7 +32,7 @@ numMatrix.sumRegion(1, 2, 2, 4); // return 12 (蓝色矩形框的元素总和)
 
 1. 从题目中可以看到int sumRegion(int row1, int col1, int row2, int col2) 返回 左上角 (row1, col1) 、右下角 (row2, col2) 所描述的子矩阵的元素总和 ，因此该题第一眼想到的是使用前缀和，先将二维数组中每个元素[row,col]到原点[0,0]的和算出来，存放在前缀和数组preSum中。
 
-   ![2](F:\git资料\Learning-summary\Picture\Leetcode\2.jpeg)
+   ![2](https://github.com/kuangdi1992/learning-summary/blob/master/Picture/Leetcode/2.jpeg)
    $$
    S(O,D)=S(O,C)+S(O,B)−S(O,A)+D
    $$
@@ -45,7 +45,7 @@ numMatrix.sumRegion(1, 2, 2, 4); // return 12 (蓝色矩形框的元素总和)
    
 2. 前面已经求出了数组中从 [0,0] 位置到 [i,j] 位置的 preSum。下面要利用 preSum[i]\[j]来快速求出任意子矩形的面积。
 
-   ![3](F:\git资料\Learning-summary\Picture\Leetcode\3.jpeg)
+   ![3](https://github.com/kuangdi1992/learning-summary/blob/master/Picture/Leetcode/3.jpeg)
    $$
    S(A,D)=S(O,D)−S(O,E)−S(O,F)+S(O,G)
    $$
@@ -83,4 +83,4 @@ public class leetcode304 {
 }
 ```
 
-![4](F:\git资料\Learning-summary\Picture\Leetcode\4.png)
+![4](https://github.com/kuangdi1992/learning-summary/blob/master/Picture/Leetcode/4.png)
