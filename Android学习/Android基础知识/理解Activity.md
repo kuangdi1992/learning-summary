@@ -14,7 +14,7 @@ Android应用的多个Activity组成Activity栈，当前活动的Activity位于�
 
 建立自己的Activity需要继承Activity基类。在不同的应用场景下，有时要求继承Activity的子类，例如如果应用程序界面只包括列表，则可以让应用程序继承ListActivity。
 
-![30](F:\git资料\Learning-summary\Picture\Android\30.webp)
+![30](https://github.com/kuangdi1992/learning-summary/tree/master/Picture/Android/30.webp)
 
 从上图可知，Activity类间接或者直接继承了Context、ContextWrapper、ContextThemeWrapper等基类，因此Activity可以直接调用它们的方法。
 
@@ -179,9 +179,9 @@ public class SecondActivity extends Activity {
 
 结果：
 
-![31](F:\git资料\Learning-summary\Picture\Android\31.png)
+![31](https://github.com/kuangdi1992/learning-summary/tree/master/Picture/Android/31.png)
 
-![32](F:\git资料\Learning-summary\Picture\Android\32.png)
+![32](https://github.com/kuangdi1992/learning-summary/tree/master/Picture/Android/32.png)
 
 ### Bundle在Activity之间交换数据
 
@@ -226,7 +226,7 @@ Activity大致会经过如下四个状态：
 >
 > 销毁状态：该Activity结束，或Activity所在的Dalvik进程被结束
 
-![33](F:\git资料\Learning-summary\Picture\Android\33.png)
+![33](https://github.com/kuangdi1992/learning-summary/tree/master/Picture/Android/33.png)
 
 在Activity的生命周期中，如下方法会被系统回调：
 
