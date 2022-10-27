@@ -21,7 +21,7 @@ HTML元素以id属性来设置id选择器,CSS 中 id 选择器以 "#" 来定义�
 
 结果：
 
-![image-20221027233838789](F:\git资料\Learning-summary\Picture\前端\CSS1)
+![image-20221027234504784](https://github.com/kuangdi1992/learning-summary/blob/master/Picture/%E5%89%8D%E7%AB%AF/CSS1.png)
 
 # class选择器
 
@@ -41,4 +41,4 @@ p.hi
 
 结合上面的html代码，结果如下：
 
-![image-20221027234049001](F:\git资料\Learning-summary\Picture\前端\CSS2)
+![image-20221027234530220](https://github.com/kuangdi1992/learning-summary/blob/master/Picture/%E5%89%8D%E7%AB%AF/CSS2.png)
